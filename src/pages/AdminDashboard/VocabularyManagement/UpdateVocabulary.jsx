@@ -22,14 +22,17 @@ const UpdateVocabulary = () => {
       lessonNumber: parseInt(data.lessonNumber),
     };
 
-    fetch(`http://localhost:5000/updatevocab/${vocabulary._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(newVocabulary),
-    })
+    fetch(
+      `https://vocabulary-app-server.vercel.app/updatevocab/${vocabulary._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(newVocabulary),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {

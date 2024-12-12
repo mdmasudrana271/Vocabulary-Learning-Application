@@ -10,7 +10,7 @@ const ManageUsers = () => {
   // const [buttonStatus, setButtonStatus] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allUsers`, {
+    fetch(`https://vocabulary-app-server.vercel.app/allUsers`, {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -23,13 +23,16 @@ const ManageUsers = () => {
   }, []);
 
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/makeAdmin/${user._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://vocabulary-app-server.vercel.app/users/makeAdmin/${user._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
@@ -41,13 +44,16 @@ const ManageUsers = () => {
   };
 
   const handleDemoteUser = (user) => {
-    fetch(`http://localhost:5000/users/makeUser/${user._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://vocabulary-app-server.vercel.app/users/makeUser/${user._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
@@ -59,13 +65,16 @@ const ManageUsers = () => {
   };
 
   const handleDeleteUser = (user) => {
-    fetch(`http://localhost:5000/delete-my-users/${user._id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://vocabulary-app-server.vercel.app/delete-my-users/${user._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {

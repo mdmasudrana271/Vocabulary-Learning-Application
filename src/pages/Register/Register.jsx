@@ -62,7 +62,7 @@ const Register = () => {
           const createdUser = {
             name: data.name,
             email: data.email,
-            role: data.type,
+            role: "user",
             image: imgData.data.url,
           };
           setSignUPError("");
@@ -109,7 +109,7 @@ const Register = () => {
   // post user information on database
 
   const saveUser = (createdUser) => {
-    fetch("http://localhost:5000/users", {
+    fetch("https://vocabulary-app-server.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -163,19 +163,6 @@ const Register = () => {
                   {errors.email?.message}
                 </p>
               )}
-            </div>
-            <div className="form-control w-full">
-              <label className="label">
-                <span className="label-text">Account Type</span>
-              </label>
-              <select
-                {...register("type", { required: "Account type is required" })}
-                className="select select-bordered w-full"
-              >
-                <option disabled>Please Select Account Type</option>
-                <option>user</option>
-                <option>admin</option>
-              </select>
             </div>
             <div className="form-control w-full">
               <label className="label">

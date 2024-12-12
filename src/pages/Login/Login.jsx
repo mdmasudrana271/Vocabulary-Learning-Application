@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -22,12 +22,25 @@ const Login = () => {
   const [isAdmin] = useAdmin(userLoginEmail);
   const navigate = useNavigate();
 
-  if (token && !isAdmin) {
-    navigate("/userDashboard/lessons");
-  } else if (token && isAdmin) {
-    navigate("/adminDashboard/manageusers");
-  }
-  console.log(isAdmin);
+  console.log("token: ", token);
+  console.log("is admin: ", isAdmin);
+
+  // if (token && !isAdmin) {
+  //   navigate("/userDashboard/lessons");
+  // } else if (token && isAdmin) {
+  //   navigate("/adminDashboard/manageusers");
+  // }
+
+  useEffect(() => {
+    if (token && isAdmin) {
+      navigate("/adminDashboard/manageusers");
+    } else if (token && !isAdmin) {
+      navigate("/userDashboard/lessons");
+    }
+  }, [token, isAdmin, navigate]);
+
+  console.log("token: ", token);
+  console.log("is amdin: ", isAdmin);
 
   // toggle password type text to password and toggle eye button
   const [passwordType, setPasswordType] = useState("password");

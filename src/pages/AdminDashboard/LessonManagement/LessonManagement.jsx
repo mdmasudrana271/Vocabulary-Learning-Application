@@ -9,7 +9,7 @@ const LessonManagement = () => {
   const [deleteLesson, setDeleteLesson] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allLessons`, {
+    fetch(`https://vocabulary-app-server.vercel.app/allLessons`, {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -22,13 +22,16 @@ const LessonManagement = () => {
   }, []);
 
   const handleDeleteLesson = (vocab) => {
-    fetch(`http://localhost:5000/delete-lesson/${vocab._id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://vocabulary-app-server.vercel.app/delete-lesson/${vocab._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {

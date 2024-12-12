@@ -22,7 +22,7 @@ const AddVocabulary = () => {
       lessonNumber: parseInt(data.lessonNumber),
     };
 
-    fetch("http://localhost:5000/vocabulary", {
+    fetch("https://vocabulary-app-server.vercel.app/vocabulary", {
       method: "POST",
       headers: {
         "content-type": "application/json",

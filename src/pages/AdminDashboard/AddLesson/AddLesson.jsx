@@ -20,7 +20,7 @@ const AddLesson = () => {
       wordCount: 0,
     };
 
-    fetch("http://localhost:5000/lesson", {
+    fetch("https://vocabulary-app-server.vercel.app/lesson", {
       method: "POST",
       headers: {
         "content-type": "application/json",

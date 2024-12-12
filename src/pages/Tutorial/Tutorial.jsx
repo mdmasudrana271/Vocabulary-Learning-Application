@@ -4,7 +4,7 @@ const Tutorial = () => {
   const [tutorials, setTutorials] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/tutorials", {
+    fetch("https://vocabulary-app-server.vercel.app/tutorials", {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

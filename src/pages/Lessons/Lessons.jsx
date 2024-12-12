@@ -6,7 +6,7 @@ const Lessons = () => {
   const [lessons, setLessons] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/lessons", {
+    fetch("https://vocabulary-app-server.vercel.app/lessons", {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -29,7 +29,7 @@ const Lessons = () => {
           Learn your everyday vocabulary lessons{" "}
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center justify-around items-center my-10 mx-auto">
-          {lessons?.map((lesson) => (
+          {lessons.map((lesson) => (
             <div key={lesson._id} className="card bg-base-100 shadow-xl  w-96">
               <div className="card-body items-center text-center">
                 <h2 className="card-title">{lesson.lessonName}</h2>

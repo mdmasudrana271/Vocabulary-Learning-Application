@@ -20,14 +20,17 @@ const UpdateLesson = () => {
       wordCount: data.wordCount,
     };
 
-    fetch(`http://localhost:5000/updatelesson/${lesson._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(newLesson),
-    })
+    fetch(
+      `https://vocabulary-app-server.vercel.app/updatelesson/${lesson._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(newLesson),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {

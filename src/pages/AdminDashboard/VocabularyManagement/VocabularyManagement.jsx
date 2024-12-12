@@ -9,7 +9,7 @@ const VocabularyManagement = () => {
   const [deleteVocab, setDeleteVocab] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allVocabulary`, {
+    fetch(`https://vocabulary-app-server.vercel.app/allVocabulary`, {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -22,18 +22,22 @@ const VocabularyManagement = () => {
   }, []);
 
   const handleDeleteVocab = (vocab) => {
-    fetch(`http://localhost:5000/delete-vocabulary/${vocab._id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://vocabulary-app-server.vercel.app/delete-vocabulary/${vocab._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
           toast.success("Delete User Successfully");
-          window.location.reload();
+          // window.location.reload();
+          console.log(data);
         }
       });
   };

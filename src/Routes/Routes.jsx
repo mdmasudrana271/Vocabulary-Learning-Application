@@ -61,7 +61,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/vocabulary/${params.lessonNumber}`),
+          fetch(
+            `https://vocabulary-app-server.vercel.app/vocabulary/${params.lessonNumber}`
+          ),
       },
     ],
   },
@@ -133,7 +135,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/word/${params.id}`),
+          fetch(`https://vocabulary-app-server.vercel.app/word/${params.id}`),
       },
       {
         path: "/adminDashboard/lessonsmangement",
@@ -155,7 +157,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/lesson/${params.id}`),
+          fetch(`https://vocabulary-app-server.vercel.app/lesson/${params.id}`),
       },
     ],
   },
