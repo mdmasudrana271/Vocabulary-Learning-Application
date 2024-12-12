@@ -18,20 +18,17 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [userLoginEmail, setUserLoginEmail] = useState("");
   const [token] = useToken(userLoginEmail);
+  const [isAdmin, isAdminLoading] = useAdmin(userLoginEmail);
 
-  const [isAdmin] = useAdmin(email);
   const navigate = useNavigate();
 
-  console.log("token: ", token);
-  console.log("is admin: ", isAdmin);
-
   useEffect(() => {
-    if (token && isAdmin) {
+    if (!isAdminLoading && token && isAdmin) {
       navigate("/adminDashboard/manageusers");
-    } else if (token && !isAdmin) {
+    } else if (!isAdminLoading && token && !isAdmin) {
       navigate("/userDashboard/lessons");
     }
-  }, [token, isAdmin, navigate]);
+  }, [token, isAdmin, navigate, isAdminLoading]);
 
   console.log("token: ", token);
   console.log("is amdin: ", isAdmin);

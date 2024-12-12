@@ -5,7 +5,7 @@ const useAdmin = (email) => {
   const [isAdminLoading, setIsAdminLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`https://vocabulary-app-server.vercel.app/users/admin/${email}`, {
+      fetch(`https://vocabulary-app-server.vercel.app/admin/${email}`, {
         headers: {
           "content-type": "application/json",
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
