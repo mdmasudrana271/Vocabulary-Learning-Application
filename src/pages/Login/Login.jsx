@@ -19,17 +19,11 @@ const Login = () => {
   const [userLoginEmail, setUserLoginEmail] = useState("");
   const [token] = useToken(userLoginEmail);
 
-  const [isAdmin] = useAdmin(userLoginEmail);
+  const [isAdmin] = useAdmin(email);
   const navigate = useNavigate();
 
   console.log("token: ", token);
   console.log("is admin: ", isAdmin);
-
-  // if (token && !isAdmin) {
-  //   navigate("/userDashboard/lessons");
-  // } else if (token && isAdmin) {
-  //   navigate("/adminDashboard/manageusers");
-  // }
 
   useEffect(() => {
     if (token && isAdmin) {
@@ -60,7 +54,6 @@ const Login = () => {
         const user = result.user;
         setUserLoginEmail(user.email);
         toast.success("Login successfull");
-        console.log(user);
         reset();
       })
       .catch((error) => {

@@ -8,8 +8,6 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user.email);
 
-  console.log(isAdmin);
-
   return (
     <div className="navbar">
       <div className="navbar-start">
