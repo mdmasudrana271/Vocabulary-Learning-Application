@@ -23,10 +23,12 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isAdminLoading && token && isAdmin) {
-      navigate("/adminDashboard/manageusers");
-    } else if (!isAdminLoading && token && !isAdmin) {
-      navigate("/userDashboard/lessons");
+    if (!isAdminLoading) {
+      if (token && isAdmin) {
+        navigate("/adminDashboard/manageusers");
+      } else if (token && !isAdmin) {
+        navigate("/userDashboard/lessons");
+      }
     }
   }, [token, isAdmin, navigate, isAdminLoading]);
 
